@@ -1,132 +1,635 @@
 ---
+
 title: "Scripting for Cybersecurity"
-author: [Mark Cummins]
-date: "2025-09-18"
-subject: "Lab 1: Setting Up Your Lab Environment"
+author: "Mark Cummins"
+date: "2026-09-18"
+subject: "Lab 1: Setting Up Your Development Environment"
 lang: "en"
-...
-# Lab 1: Setting Up Your Lab Environment
+----------
+
+# Lab 1: Setting Up Your Development Environment
+
+## Introduction
+
+Throughout this module, we will use **GitHub**, **Git**, and **GitHub Codespaces** to write, run, and store our work.
+
+You will use the same GitHub repository throughout the semester.
+
+By the end of the module, this repository will provide a record of your work and can form part of your programming and cybersecurity portfolio.
+
+---
 
 ## Objectives
 
-By the end of this lab, you will:
+By the end of this lab, you should be able to:
 
-1. Create a GitHub account and verify your student status.
-2. Understand the GitHub Student Developer Pack and its benefits.
-3. Use GitHub Codespaces to run Python code directly in the browser (no local setup required).
-4. Write and run simple Python programs using input() and print().
+1. Create and secure a GitHub account.
+2. Apply for GitHub Education student benefits.
+3. Create a GitHub repository for this module.
+4. Launch a GitHub Codespace.
+5. Understand the difference between GitHub, Git, and Codespaces.
+6. Create and run a simple Python program.
+7. Save, commit, and push your work to GitHub.
+8. Organise your work into folders for each lab.
 
-___  
+---
 
-### Part 1: Create Your GitHub Account
+# Part 1: GitHub, Git and Codespaces
 
-1. Go to https://github.com
-2. Click Sign up and create a new account using your university email address.
-3. Choose a username you’re comfortable using throughout your degree (avoid joke names).
-4. Use a strong password (consider a password manager).
-5. Verify your email address by clicking the link GitHub sends you.
+Before getting started, it is useful to understand the three main technologies we will be using.
 
-___  
+### GitHub
 
-### Part 2: Verify as a Student
+**GitHub** is an online platform used to store and share software projects.
 
-1. Visit GitHub Education
-2. Click Get Student Benefits.
-3. Log in with your GitHub account.
-4. Apply for the GitHub Student Developer Pack:
-5. Provide your university email (if not already used).
-6. Upload proof of student status (Clear picture of your student ID card ).
-7. Secure your account using two-factor authentication
-8. Complete your user profile/billing information.. essentially your name as it appears on your student ID, and your address (no need to add credit cards etc.)
-9. Wait for approval (usually within 24–48 hours).
+Your work for this module will be stored in a GitHub repository.
 
-> You can continue with the rest of this lab without waiting for approval.
+### Git
 
-___  
+**Git** is a version-control system.
 
-### Part 3: Explore GitHub Codespaces
+It allows us to:
 
-GitHub Codespaces lets you run code in the cloud with just a browser — no need to install Python locally.
+* track changes to files;
+* create snapshots of our work;
+* return to earlier versions;
+* collaborate with other developers.
 
-1. Log into GitHub
-2. Create a new repository:
-3. Click the + in the top-right corner → New repository.
-4. Name it: lab-01.
-5. Choose Public (you can make it private later if you prefer).
-6. Check Add a README file.
-7. Click Create repository.
-8. On the repository page, click the green Code button → Open with Codespaces → New codespace.
-9. After a short wait, you’ll have a full coding environment running in your browser.(Will open a new tab)
+### GitHub Codespaces
 
-> You can use the README File each week to keep any notes you want for each lab.
+**GitHub Codespaces** provides a development environment running in the cloud.
 
-___  
+It gives us:
 
-### Part 4: Your First Python Program
+* a Linux environment;
+* Visual Studio Code;
+* a terminal;
+* Python;
+* Git;
+* common development tools.
 
-In your Codespace, create a new file:  
-1. In the Explorer panel, click New File.
-2. Name it hello.py.
-3. Type the following code:  
-   ```print("Hello, world!")```
+This means that we can use the same development environment from almost any computer with a web browser.
 
-Run it by typing this command in the terminal at the bottom:  
-```python3 hello.py```
+---
 
-You should see:  
-```Hello, world!```
+# Part 2: Create Your GitHub Account
 
-___  
+If you already have a suitable GitHub account, you can skip this section.
 
-### Part 5: Using Input and Print
+1. Visit:
 
-Now let’s make your program interactive. Replace the contents of hello.py with:
+   https://github.com
 
-```name = input("What is your name? ")```
-```print("Hello, " + name + "!") ```
+2. Select **Sign up**.
 
-Run it again:  
-```python3 hello.py```
+3. Create an account.
 
-> Try typing different names. What happens?
+4. Use an email address that you will continue to have access to.
 
-___  
+5. Choose a professional username that you are comfortable using throughout your degree.
 
-### Part 6: Saving your work
+Avoid usernames that you would not be happy to show to:
 
-Once we've finished editing our files, we'll need to ensure we save them. So we'll need to use the git version control process. Which makes it a little more work.
+* a lecturer;
+* an employer;
+* a placement supervisor;
+* a recruiter.
 
-1. Choose the source control icon (Looks like three connected circles) on the left hand panel of your codespace VSCode.
-2. Under the green Commit label, hover over 'changes' then click the '+' icon to add all files for staging.
-3. Then in the comment box near the top add a comment, something like 'finished lab 01' or whatever suits.
-4. Click the correct comment icon just above the comments box.
-5. Finally click the 3 dots and select push from the dropwon list of options.
-6. If you go back and view your Repo on github you should now see your saved files added.
+6. Use a strong, unique password.
 
-___  
+Using a password manager is recommended.
 
-### Part 7: Practice Exercises
+7. Verify your email address when GitHub sends you the verification message.
 
-1. Write a program that asks the user for their age, then prints:  
-   > You are X years old.
-   > 
-2. Write a program that asks the user for two numbers, adds them, and prints the result.
-   
-3. Write a program that asks a students for their name, age and student number and then print that information back out.
-___  
+---
 
-###  Deliverables
+# Part 3: Secure Your Account
 
-By the end of this lab, you should:
+As cybersecurity students, account security is important.
 
-Have a GitHub account and repository named lab-01.
-Be able to run Python code in Codespaces.
+Enable **two-factor authentication (2FA)** on your GitHub account.
 
-___  
+Navigate to your GitHub account security settings and follow the instructions to enable 2FA.
 
-### Further Work 
+Where possible, use:
 
-In your second lab this week we'll be learning more basic commands and completing more practice exercises.  
-Feel free to [explore codespaces](https://www.datacamp.com/tutorial/github-codespaces), any intro to [python courses](https://www.w3schools.com/python/), or even [look at using markdown](https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet) for your notes. (you can look at the source of this page for some basic examples)
+* an authenticator application; or
+* another secure authentication method.
 
+Store any recovery codes somewhere safe.
 
+> Never store passwords, authentication codes, API keys, tokens, or other secrets in a public GitHub repository.
+
+---
+
+# Part 4: GitHub Education
+
+GitHub provides additional benefits to verified students through **GitHub Education**.
+
+Visit:
+
+https://education.github.com
+
+Look for the option to apply for student benefits.
+
+You may be asked to provide evidence that you are currently enrolled as a student.
+
+This might include:
+
+* your university email address;
+* student identification;
+* proof of enrolment;
+* other documentation requested by GitHub.
+
+Submit your application.
+
+> Approval may not be immediate. You do not need to wait for approval before continuing with this lab.
+
+GitHub Education is useful, but it is **not required to complete today's exercises**.
+
+---
+
+# Part 5: Create Your Module Repository
+
+We will use **one repository for the entire module**.
+
+Log into GitHub.
+
+Create a new repository.
+
+Use the repository name:
+
+```text
+scripting-for-cybersecurity
+```
+
+Select either **Public** or **Private**, depending on your lecturer's instructions.
+
+If using a public repository, remember:
+
+> Anything committed to the repository may be visible to other people.
+
+Never commit:
+
+* passwords;
+* API keys;
+* access tokens;
+* private keys;
+* personal information;
+* confidential information.
+
+When creating the repository:
+
+1. Name it:
+
+```text
+scripting-for-cybersecurity
+```
+
+2. Select **Add a README file**.
+
+3. Create the repository.
+
+You should now have a repository containing:
+
+```text
+scripting-for-cybersecurity/
+└── README.md
+```
+
+---
+
+# Part 6: Launch Your Codespace
+
+Open your new repository on GitHub.
+
+Select the green **Code** button.
+
+Choose the **Codespaces** option.
+
+Create a new Codespace.
+
+After a short period, Visual Studio Code should open in your browser.
+
+Your screen should contain:
+
+* an Explorer panel on the left;
+* an editor in the centre;
+* a terminal at the bottom.
+
+This is the development environment we will use throughout the module.
+
+---
+
+# Part 7: Explore the Codespace
+
+Locate the **Explorer** panel.
+
+You should see your repository and its files.
+
+Your repository currently contains:
+
+```text
+README.md
+```
+
+Locate the terminal at the bottom of the screen.
+
+If the terminal is not visible, you can normally open one from:
+
+```text
+Terminal → New Terminal
+```
+
+In the terminal, type:
+
+```bash
+pwd
+```
+
+Do not worry about what this command means yet.
+
+You should see a path similar to:
+
+```text
+/workspaces/scripting-for-cybersecurity
+```
+
+Now type:
+
+```bash
+ls
+```
+
+You should see:
+
+```text
+README.md
+```
+
+We will learn what both commands mean in the next lab.
+
+---
+
+# Part 8: Create Your First Lab Folder
+
+We will organise our work into folders.
+
+In the Explorer panel, create a folder called:
+
+```text
+lab01
+```
+
+Your repository should now look similar to:
+
+```text
+scripting-for-cybersecurity/
+├── README.md
+└── lab01/
+```
+
+All work from today's lab should be placed inside `lab01`.
+
+---
+
+# Part 9: Your First Python Program
+
+Inside the `lab01` folder, create a new file called:
+
+```text
+hello.py
+```
+
+Add the following code:
+
+```python
+print("Hello, world!")
+```
+
+Save the file.
+
+Your repository should now contain:
+
+```text
+scripting-for-cybersecurity/
+├── README.md
+└── lab01/
+    └── hello.py
+```
+
+---
+
+# Part 10: Run Your Program
+
+Use the terminal.
+
+If necessary, move into the `lab01` directory:
+
+```bash
+cd lab01
+```
+
+Run your program:
+
+```bash
+python3 hello.py
+```
+
+You should see:
+
+```text
+Hello, world!
+```
+
+You have now created and executed your first Python program inside GitHub Codespaces.
+
+---
+
+# Part 11: Using `input()` and `print()`
+
+Replace the contents of `hello.py` with:
+
+```python
+name = input("What is your name? ")
+
+print("Hello, " + name + "!")
+```
+
+Run the program again:
+
+```bash
+python3 hello.py
+```
+
+Enter your name when prompted.
+
+Example:
+
+```text
+What is your name? Alex
+Hello, Alex!
+```
+
+Run the program several times using different values.
+
+---
+
+# Exercise 1: Personal Introduction
+
+Modify your program so that it asks the user for:
+
+* their name;
+* their course;
+* their favourite area of cybersecurity.
+
+Example interaction:
+
+```text
+What is your name? Alex
+What course are you studying? Cybersecurity
+What area of cybersecurity interests you? Digital Forensics
+```
+
+The program should then display something similar to:
+
+```text
+Hello Alex
+You are studying Cybersecurity
+You are interested in Digital Forensics
+```
+
+---
+
+# Exercise 2: Create Another Python File
+
+Inside `lab01`, create:
+
+```text
+student.py
+```
+
+Write a program that asks the user for:
+
+* their name;
+* their student number;
+* their year of study.
+
+Display the information back to the user.
+
+Example:
+
+```text
+Name: Alex Smith
+Student Number: C00123456
+Year: 2
+```
+
+---
+
+# Part 12: Saving vs Version Control
+
+There is an important difference between **saving a file** and **committing a file**.
+
+## Saving
+
+Saving updates the file inside your Codespace.
+
+For example:
+
+```text
+Ctrl + S
+```
+
+saves changes to the current file.
+
+## Committing
+
+A **Git commit** records a snapshot of your work.
+
+Think of it as creating a named checkpoint.
+
+## Pushing
+
+A **push** sends your Git commits from your Codespace to GitHub.
+
+The process is therefore:
+
+```text
+Edit
+  ↓
+Save
+  ↓
+Stage
+  ↓
+Commit
+  ↓
+Push
+```
+
+---
+
+# Part 13: Commit and Push Your Work
+
+Open the **Source Control** panel in Visual Studio Code.
+
+The icon normally resembles branching or connected lines.
+
+You should see the files you changed.
+
+Stage your changes.
+
+Depending on the current interface, you can either stage individual files or stage all changes.
+
+Enter a commit message such as:
+
+```text
+Complete Lab 1
+```
+
+Commit your changes.
+
+Push or synchronise your changes with GitHub.
+
+Now return to your GitHub repository in another browser tab.
+
+Refresh the page.
+
+You should see your `lab01` directory and files.
+
+Your repository should look similar to:
+
+```text
+scripting-for-cybersecurity/
+├── README.md
+└── lab01/
+    ├── hello.py
+    └── student.py
+```
+
+---
+
+# Exercise 3: Verify Your Repository
+
+Check that:
+
+* `lab01` exists;
+* `hello.py` exists;
+* `student.py` exists;
+* your most recent commit appears on GitHub.
+
+If your files only exist inside the Codespace but do not appear on GitHub, you probably have not pushed your latest commit.
+
+---
+
+# Part 14: Update Your README
+
+Open:
+
+```text
+README.md
+```
+
+Add something similar to:
+
+```markdown
+# Scripting for Cybersecurity
+
+This repository contains my practical work for the Scripting for Cybersecurity module.
+
+## Labs
+
+- Lab 01 - Development Environment
+```
+
+Save the file.
+
+Commit and push the change.
+
+---
+
+# Part 15: Your Repository Structure
+
+By the end of the semester, your repository may look similar to:
+
+```text
+scripting-for-cybersecurity/
+├── README.md
+├── lab01/
+├── lab02/
+├── lab03/
+├── lab04/
+├── lab05/
+└── ...
+```
+
+Each week's work should be placed inside the appropriate folder.
+
+---
+
+# Deliverables
+
+By the end of this lab you should have:
+
+* a GitHub account;
+* two-factor authentication enabled;
+* a repository called `scripting-for-cybersecurity`;
+* a working GitHub Codespace;
+* a `lab01` directory;
+* at least two Python files;
+* your work committed and pushed to GitHub.
+
+---
+
+# Preparing for Lab 2
+
+In the next lab we will work mainly inside the **Linux terminal** in your Codespace.
+
+We will learn how to:
+
+* navigate directories;
+* create files and directories;
+* understand Linux commands;
+* use command-line help;
+* work with shell variables;
+* redirect output;
+* combine commands using pipes.
+
+Before finishing, open the terminal and run:
+
+```bash
+pwd
+```
+
+and:
+
+```bash
+ls
+```
+
+You do not need to understand these commands yet.
+
+You will in the next lab.
+
+---
+
+# Further Work
+
+If you finish early, explore:
+
+* GitHub Markdown;
+* your repository history;
+* Visual Studio Code;
+* GitHub Codespaces.
+
+You can also try editing your `README.md` to include:
+
+* a short description of the module;
+* a list of completed labs;
+* Markdown headings;
+* code blocks;
+* links.
+
+---
+
+# End of Lab 1
