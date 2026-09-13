@@ -1,10 +1,4 @@
-# Lab 1 – Introduction to the Linux Command Line
-
-**Module:** Scripting for Cybersecurity
-**Duration:** Approximately 2 hours
-**Level:** Year 2
-**Environment:** Linux terminal
-
+# Lab 2 – Introduction to the Linux Command Line
 ---
 
 ## Learning Outcomes
@@ -37,6 +31,8 @@ Depending on your Linux distribution, you may find the terminal under names such
 * GNOME Terminal
 * Alacritty
 * WezTerm
+
+For our module we'll be using codespaces environment and it's terminal. You are free to use whatever terminal environment you prefer as most of the commands lists should be common across them all.
 
 When you open a terminal you should see a prompt similar to:
 
