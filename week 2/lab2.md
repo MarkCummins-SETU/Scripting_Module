@@ -1,12 +1,3 @@
----
-
-title: "Scripting for Cybersecurity"
-author: "Mark Cummins"
-date: "2026-09-18"
-subject: "Lab 2: Introduction to the Linux Command Line"
-lang: "en"
-----------
-
 # Lab 2: Introduction to the Linux Command Line
 
 ## Introduction
