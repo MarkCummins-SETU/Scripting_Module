@@ -1,12 +1,3 @@
----
-
-title: "Scripting for Cybersecurity"
-author: "Mark Cummins"
-date: "2026-09-18"
-subject: "Lab 1: Setting Up Your Development Environment"
-lang: "en"
-----------
-
 # Lab 1: Setting Up Your Development Environment
 
 ## Introduction
@@ -15,7 +6,7 @@ Throughout this module, we will use **GitHub**, **Git**, and **GitHub Codespaces
 
 You will use the same GitHub repository throughout the semester.
 
-By the end of the module, this repository will provide a record of your work and can form part of your programming and cybersecurity portfolio.
+By the end of the module, this repository will provide a record of your work and can form part of your cybersecurity portfolio.
 
 ---
 
@@ -163,9 +154,7 @@ Use the repository name:
 scripting-for-cybersecurity
 ```
 
-Select either **Public** or **Private**, depending on your lecturer's instructions.
-
-If using a public repository, remember:
+Select **Public**, remember:
 
 > Anything committed to the repository may be visible to other people.
 
@@ -367,8 +356,8 @@ Enter your name when prompted.
 Example:
 
 ```text
-What is your name? Alex
-Hello, Alex!
+What is your name? Mark
+Hello, Mark!
 ```
 
 Run the program several times using different values.
@@ -386,17 +375,17 @@ Modify your program so that it asks the user for:
 Example interaction:
 
 ```text
-What is your name? Alex
+What is your name? Mark
 What course are you studying? Cybersecurity
-What area of cybersecurity interests you? Digital Forensics
+What area of cybersecurity interests you? Cryptography
 ```
 
 The program should then display something similar to:
 
 ```text
-Hello Alex
+Hello Mark
 You are studying Cybersecurity
-You are interested in Digital Forensics
+You are interested in Cryptography
 ```
 
 ---
