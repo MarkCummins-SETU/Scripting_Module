@@ -2,6 +2,8 @@
 
 ## Scripting for Cybersecurity
 
+The following exercises are similar to the type of questions you might get asked in your first practical exam. For the exam you'll need to be able to complete these exercises without any notes, AI or internet help.
+
 Complete the following 20 short tasks using your existing GitHub Codespace and `scripting-for-cybersecurity` repository.
 
 Where possible, complete each task using the terminal rather than the graphical interface.
