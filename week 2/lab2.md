@@ -1,70 +1,116 @@
-# Lab 2 – Introduction to the Linux Command Line
 ---
 
-## Learning Outcomes
+title: "Scripting for Cybersecurity"
+author: "Mark Cummins"
+date: "2026-09-18"
+subject: "Lab 2: Introduction to the Linux Command Line"
+lang: "en"
+----------
 
-By the end of this lab you should be able to:
+# Lab 2: Introduction to the Linux Command Line
 
-* navigate confidently through the Linux filesystem;
-* identify your current location and the contents of directories;
-* understand the basic structure of Linux commands;
-* use command-line help and documentation;
-* create and manipulate files and directories;
-* use shell variables and environment variables;
-* understand quoting and command expansion;
-* use command history and command-line shortcuts;
-* redirect command output to files;
-* combine commands using pipes;
-* construct simple command pipelines useful for cybersecurity tasks.
+## Introduction
+
+In the previous lab you created a GitHub repository and launched a GitHub Codespace.
+
+That Codespace provides us with a Linux development environment.
+
+In this lab we will begin working directly with the **Linux command line**.
+
+For cybersecurity work, being comfortable using the command line is an essential skill.
+
+Throughout this module we will build on these commands and eventually use them to:
+
+* process files;
+* search logs;
+* automate repetitive tasks;
+* write Bash scripts;
+* manipulate data;
+* interact with cybersecurity tools.
 
 ---
 
-# 1. Opening the Terminal
+## Objectives
 
-The Linux command line is accessed through a **terminal**.
+By the end of this lab, you should be able to:
 
-Depending on your Linux distribution, you may find the terminal under names such as:
+1. Understand the basic structure of Linux commands.
+2. Determine your current location in the filesystem.
+3. Navigate between directories.
+4. List files and directories.
+5. Create files and directories.
+6. Use tab completion and command history.
+7. Find help for unfamiliar commands.
+8. Create and use shell variables.
+9. Understand basic quoting and variable expansion.
+10. Use command substitution.
+11. Redirect command output.
+12. Combine commands using pipes.
+13. Build simple command pipelines.
 
-* Terminal
-* Console
-* Konsole
-* GNOME Terminal
-* Alacritty
-* WezTerm
+---
 
-For our module we'll be using codespaces environment and it's terminal. You are free to use whatever terminal environment you prefer as most of the commands lists should be common across them all.
+# Part 1: Open Your Codespace
 
-When you open a terminal you should see a prompt similar to:
+Open your GitHub repository:
 
 ```text
-student@linux:~$
+scripting-for-cybersecurity
 ```
 
-The exact appearance will vary.
+Launch the Codespace you created during Lab 1.
 
-The `$` normally indicates that you are operating as a regular user.
+Open a terminal.
 
-For this module you should **not normally need administrator/root privileges**.
+You should normally begin inside your Git repository.
+
+Enter:
+
+```bash
+pwd
+```
+
+You should see something similar to:
+
+```text
+/workspaces/scripting-for-cybersecurity
+```
+
+The exact path may differ slightly.
+
+The command:
+
+```bash
+pwd
+```
+
+means:
+
+```text
+print working directory
+```
+
+It tells us our current location.
 
 ---
 
-# 2. Your First Commands
+# Part 2: Your First Linux Commands
 
-Enter:
+Try:
 
 ```bash
 whoami
 ```
 
-This displays the username of the account you are currently using.
+This displays your current Linux username.
 
-Now enter:
+Now try:
 
 ```bash
 hostname
 ```
 
-This displays the name of the computer.
+This displays the hostname of the Linux system.
 
 Try:
 
@@ -72,44 +118,36 @@ Try:
 date
 ```
 
-and:
+Finally:
 
 ```bash
-uptime
+pwd
 ```
 
-These commands demonstrate an important feature of Linux:
+These commands each perform a small, specific task.
 
-> Most commands are small programs designed to perform one specific task.
+This is an important Linux philosophy:
+
+> Small commands can be combined to perform larger tasks.
 
 ---
 
-## Exercise 1
+# Exercise 1: Basic Commands
 
-Find commands that display the following information:
+Find commands that display:
 
-1. Your username.
-2. The computer's hostname.
+1. Your current username.
+2. The system hostname.
 3. The current date and time.
-4. How long the computer has been running.
+4. Your current working directory.
 
-Record the commands below.
-
-```text
-Username:
-
-Hostname:
-
-Date:
-
-Uptime:
-```
+Record the commands in your notes.
 
 ---
 
-# 3. Command Structure
+# Part 3: Understanding Command Structure
 
-Most Linux commands follow the general format:
+Many Linux commands follow this general structure:
 
 ```text
 command option argument
@@ -118,34 +156,28 @@ command option argument
 For example:
 
 ```bash
-ls -l /tmp
+ls -l /workspaces
 ```
 
 Here:
 
 ```text
-ls        command
--l        option
-/tmp      argument
+ls            command
+-l            option
+/workspaces   argument
 ```
 
-Options modify how a command behaves.
+The command specifies what we want to do.
 
-Arguments normally specify what the command should operate on.
+The option modifies how the command behaves.
 
-For example:
+The argument specifies what the command should operate on.
 
-```bash
-ls
-```
+---
 
-and:
+# Part 4: Listing Files
 
-```bash
-ls -l
-```
-
-run the same command but produce different output.
+The `ls` command lists files and directories.
 
 Try:
 
@@ -153,307 +185,234 @@ Try:
 ls
 ```
 
-then:
+You should see something similar to:
+
+```text
+README.md
+lab01
+```
+
+Try:
 
 ```bash
 ls -l
 ```
 
-and:
-
-```bash
-ls -la
-```
-
-Notice the difference.
-
----
-
-# 4. Finding Your Location
-
-Linux files are organised into a hierarchical filesystem.
-
-Your current location is known as the **working directory**.
-
-Display it using:
-
-```bash
-pwd
-```
-
-`pwd` means:
-
-```text
-print working directory
-```
-
-You may see something similar to:
-
-```text
-/home/student
-```
-
-The `/` at the beginning represents the filesystem root.
-
----
-
-# 5. Listing Directory Contents
-
-The command:
-
-```bash
-ls
-```
-
-lists files and directories.
-
-Try:
-
-```bash
-ls
-```
+The `-l` option produces a more detailed listing.
 
 Now try:
-
-```bash
-ls -l
-```
-
-The `-l` option produces a longer listing.
-
-Try:
 
 ```bash
 ls -a
 ```
 
-The `-a` option shows files whose names begin with `.`.
+The `-a` option also shows hidden files.
 
-These are often called **hidden files**.
-
-Finally try:
-
-```bash
-ls -lah
-```
-
-Multiple options can often be combined.
-
----
-
-## Exercise 2
-
-Use `ls` options to answer the following.
-
-1. How can you display hidden files?
-
-```text
-Command:
-```
-
-2. How can you display a detailed directory listing?
-
-```text
-Command:
-```
-
-3. Try the following:
-
-```bash
-ls --help
-```
-
-Find an option that displays file sizes in a human-readable format.
-
-```text
-Option:
-```
-
----
-
-# 6. Navigating the Filesystem
-
-The command used to change directory is:
-
-```bash
-cd
-```
-
-Try:
-
-```bash
-cd /
-```
-
-Now check your location:
-
-```bash
-pwd
-```
-
-Return to your home directory:
-
-```bash
-cd ~
-```
-
-or simply:
-
-```bash
-cd
-```
-
----
-
-## Relative and Absolute Paths
-
-An **absolute path** begins from `/`.
-
-Example:
-
-```bash
-cd /tmp
-```
-
-A **relative path** begins from your current directory.
+You may now see files or directories beginning with a `.`.
 
 For example:
 
+```text
+.git
+```
+
+Files beginning with `.` are normally hidden from a standard `ls` listing.
+
+Try combining options:
+
 ```bash
-cd Documents
+ls -la
 ```
 
 ---
 
-## Special Directory Names
+# Exercise 2: Exploring `ls`
 
-Linux provides several useful shortcuts.
+Find commands that:
 
-```text
-.       current directory
-..      parent directory
-~       your home directory
-```
+1. Display files normally.
+2. Display a detailed listing.
+3. Display hidden files.
+4. Display a detailed listing including hidden files.
 
-Try:
+---
+
+# Part 5: Create Your Lab 2 Directory
+
+Make sure you are at the root of your Git repository.
+
+Run:
 
 ```bash
-cd ~
 pwd
 ```
 
-Now:
-
-```bash
-cd ..
-pwd
-```
-
-Return home:
-
-```bash
-cd ~
-```
-
----
-
-## Exercise 3 – Navigation
-
-Starting from your home directory:
-
-```bash
-cd ~
-```
-
-Complete the following tasks.
-
-1. Move to `/tmp`.
-
-2. Confirm your location.
-
-3. Move to the parent directory.
-
-4. Return to your home directory.
-
-5. List the contents of your home directory.
-
-6. Display hidden files in your home directory.
-
----
-
-# 7. Tab Completion
-
-Typing long filenames manually is unnecessary.
-
-The Linux shell supports **tab completion**.
-
-Start typing:
-
-```bash
-cd /u
-```
-
-Now press:
+You should be somewhere similar to:
 
 ```text
-TAB
+/workspaces/scripting-for-cybersecurity
 ```
 
-The shell may automatically complete the path.
-
-Try:
+Create a new directory:
 
 ```bash
-cd /usr/sh
-```
-
-and press `TAB`.
-
-Depending on your system it may complete to something such as:
-
-```text
-/usr/share/
-```
-
-Tab completion is extremely useful when:
-
-* navigating directories;
-* working with long filenames;
-* entering commands;
-* avoiding typing errors.
-
----
-
-## Exercise 4 – Tab Completion
-
-Navigate to:
-
-```text
-/usr/share
-```
-
-but use tab completion rather than typing the full path.
-
-Return to your home directory when finished.
-
----
-
-# 8. Creating a Lab Workspace
-
-Create a directory for today's work.
-
-```bash
-cd ~
-mkdir cli-lab
+mkdir lab02
 ```
 
 Move into it:
 
 ```bash
-cd cli-lab
+cd lab02
 ```
 
 Confirm your location:
+
+```bash
+pwd
+```
+
+You should now see something similar to:
+
+```text
+/workspaces/scripting-for-cybersecurity/lab02
+```
+
+All files created during this lab should remain somewhere inside this `lab02` directory.
+
+This ensures that Git can track them.
+
+---
+
+# Part 6: Navigating Directories
+
+The command:
+
+```bash
+cd
+```
+
+means:
+
+```text
+change directory
+```
+
+Move to the parent directory:
+
+```bash
+cd ..
+```
+
+Check your location:
+
+```bash
+pwd
+```
+
+Move back into `lab02`:
+
+```bash
+cd lab02
+```
+
+---
+
+## Special Path Symbols
+
+Linux provides some useful shortcuts.
+
+```text
+.     current directory
+
+..    parent directory
+
+~     your home directory
+```
+
+For example:
+
+```bash
+cd ..
+```
+
+moves up one directory.
+
+Be careful with:
+
+```bash
+cd ~
+```
+
+This takes you to the Codespaces user's home directory.
+
+That directory is **not necessarily inside your Git repository**.
+
+For this module, most of your work should remain inside:
+
+```text
+/workspaces/scripting-for-cybersecurity
+```
+
+or one of its subdirectories.
+
+---
+
+# Exercise 3: Navigation
+
+Starting inside `lab02`:
+
+1. Display your current directory.
+2. Move to the parent directory.
+3. List its contents.
+4. Move back into `lab02`.
+5. Confirm your location.
+
+---
+
+# Part 7: Tab Completion
+
+Linux shells provide **tab completion**.
+
+This avoids typing long commands and filenames manually.
+
+Move to the repository root:
+
+```bash
+cd ..
+```
+
+Start typing:
+
+```text
+cd lab
+```
+
+Press:
+
+```text
+TAB
+```
+
+Depending on the files present, the shell may complete the directory name or show possible matches.
+
+Try navigating back into `lab02` using tab completion.
+
+Tab completion is useful for:
+
+* commands;
+* filenames;
+* directory names;
+* long paths.
+
+It also reduces typing errors.
+
+---
+
+# Part 8: Creating Directories
+
+Make sure you are inside `lab02`.
+
+Check:
 
 ```bash
 pwd
@@ -471,15 +430,27 @@ List them:
 ls
 ```
 
-You can also create several directories with one command:
+Now create three more:
 
 ```bash
 mkdir reports notes temp
 ```
 
+Your directory should now contain:
+
+```text
+lab02/
+├── evidence/
+├── logs/
+├── notes/
+├── reports/
+├── scripts/
+└── temp/
+```
+
 ---
 
-# 9. Creating Files
+# Part 9: Creating Files
 
 The `touch` command can create empty files.
 
@@ -489,33 +460,21 @@ Try:
 touch notes.txt
 ```
 
-Confirm that it exists:
+List the directory:
 
 ```bash
-ls -l
+ls
 ```
 
 Create several files:
 
 ```bash
-touch log1.txt log2.txt log3.txt
+touch file1.txt file2.txt file3.txt
 ```
 
 ---
 
-## Exercise 5 – Build a Workspace
-
-Inside `cli-lab`, create the following structure:
-
-```text
-cli-lab
-├── evidence
-├── logs
-├── notes
-├── reports
-├── scripts
-└── temp
-```
+# Exercise 4: Create a Workspace
 
 Inside the `logs` directory create:
 
@@ -525,39 +484,85 @@ auth.log
 firewall.log
 ```
 
-Verify your structure using `ls`.
+You could first move into the directory:
+
+```bash
+cd logs
+```
+
+and then create the files.
+
+When finished, return to `lab02`.
+
+Check your location using:
+
+```bash
+pwd
+```
 
 ---
 
-# 10. Displaying File Contents
+# Part 10: Displaying Text
 
-Create some text:
+The `echo` command displays text.
+
+Try:
+
+```bash
+echo "Hello Linux"
+```
+
+Try:
+
+```bash
+echo "Scripting for Cybersecurity"
+```
+
+The text is displayed in the terminal.
+
+---
+
+# Part 11: Writing Text to a File
+
+Run:
 
 ```bash
 echo "Linux command line lab" > notes.txt
 ```
 
-Display the file:
+Now display the contents:
 
 ```bash
 cat notes.txt
 ```
 
-The `cat` command displays file contents.
+You should see:
 
-Try:
-
-```bash
-echo "Cybersecurity" >> notes.txt
+```text
+Linux command line lab
 ```
 
-Now:
+The `cat` command can be used to display the contents of a text file.
+
+Now run:
+
+```bash
+echo "Scripting for Cybersecurity" >> notes.txt
+```
+
+Display the file again:
 
 ```bash
 cat notes.txt
 ```
 
-Notice the difference between:
+You should now see both lines.
+
+---
+
+# Part 12: Redirection
+
+The symbols:
 
 ```text
 >
@@ -569,21 +574,76 @@ and:
 >>
 ```
 
-We will examine these in more detail later.
+redirect command output.
+
+### `>`
+
+This writes output to a file.
+
+If the file already exists, its previous contents are replaced.
+
+Example:
+
+```bash
+date > timestamp.txt
+```
+
+### `>>`
+
+This appends output to the end of a file.
+
+Example:
+
+```bash
+date >> timestamp.txt
+```
+
+Try running:
+
+```bash
+date >> timestamp.txt
+```
+
+several times.
+
+Then:
+
+```bash
+cat timestamp.txt
+```
 
 ---
 
-# 11. Getting Help
+# Exercise 5: Redirection
 
-You are **not expected to memorise every Linux command or option**.
+Create a file called:
 
-Knowing how to find information is much more important.
+```text
+system.txt
+```
 
-There are several ways to obtain help.
+Use commands and redirection to store:
+
+1. your username;
+2. the hostname;
+3. the current date;
+4. your current directory.
+
+Display the finished file using:
+
+```bash
+cat system.txt
+```
+
+Do not type the values manually.
 
 ---
 
-## `--help`
+# Part 13: Getting Help
+
+You are not expected to memorise every Linux command or option.
+
+Being able to find help is more important.
 
 Many commands support:
 
@@ -597,7 +657,13 @@ For example:
 ls --help
 ```
 
-or:
+Try:
+
+```bash
+mkdir --help
+```
+
+and:
 
 ```bash
 grep --help
@@ -605,9 +671,9 @@ grep --help
 
 ---
 
-## Manual Pages
+# Part 14: Manual Pages
 
-Linux contains built-in documentation called **manual pages**.
+Linux also provides documentation called **manual pages**.
 
 Try:
 
@@ -615,80 +681,50 @@ Try:
 man ls
 ```
 
-Use:
+Useful keys include:
 
 ```text
-Arrow Keys     scroll
-Space          next page
-/word          search
-q              quit
+Arrow keys    Scroll
+
+Space         Next page
+
+/word         Search
+
+q             Quit
 ```
 
-Search the `ls` manual page for:
+Search the manual for:
 
 ```text
 human-readable
 ```
 
-by typing:
+by entering:
 
 ```text
 /human-readable
 ```
 
----
-
-## Searching Manual Pages
-
-Try:
-
-```bash
-man -k directory
-```
-
-This searches manual page descriptions.
-
-Another useful command is:
-
-```bash
-apropos directory
-```
+Press `q` to exit.
 
 ---
 
-## Exercise 6 – Learn to Find the Answer
+# Exercise 6: Find the Answer
 
-Using `man`, `--help`, or `apropos`, determine:
+Using `man` or `--help`, determine:
 
-1. Which option for `ls` sorts files by modification time?
+1. Which `ls` option displays human-readable file sizes?
+2. Which `ls` option sorts by modification time?
+3. Which `mkdir` option allows creation of parent directories if required?
+4. What does `cat` do?
 
-```text
-Answer:
-```
-
-2. Which command displays the first lines of a file?
-
-```text
-Answer:
-```
-
-3. Which command displays the final lines of a file?
-
-```text
-Answer:
-```
-
-4. Which option for `mkdir` allows creation of nested directories?
-
-```text
-Answer:
-```
+Try to find the answers rather than searching the Internet.
 
 ---
 
-# 12. Shell Variables
+# Part 15: Shell Variables
 
-The shell allows information to be stored in variables.
+Shell variables allow us to store values.
 
 Create a variable:
 
@@ -700,12 +736,6 @@ Display it:
 
 ```bash
 echo $course
-```
-
-You should see:
-
-```text
-Cybersecurity
 ```
 
 Create another:
@@ -724,53 +754,25 @@ echo $course $year
 
 ## Important
 
-There must be **no spaces around the `=` sign**.
+There must be no spaces around the `=` sign.
 
 Correct:
 
 ```bash
-name="Alice"
+name="Alex"
 ```
 
 Incorrect:
 
 ```bash
-name = "Alice"
+name = "Alex"
 ```
 
 ---
 
-# 13. Using Variables Inside Text
+# Exercise 7: Variables
 
-Variables can be inserted into strings.
-
-```bash
-student="Alice"
-```
-
-Now:
-
-```bash
-echo "Hello $student"
-```
-
-Output:
-
-```text
-Hello Alice
-```
-
-Curly brackets can make the variable name clearer:
-
-```bash
-echo "Hello ${student}"
-```
-
----
-
-## Exercise 7 – Variables
-
-Create the following variables:
+Create variables called:
 
 ```text
 name
@@ -780,21 +782,19 @@ year
 
 Give them suitable values.
 
-Produce a single line of output similar to:
+Use them to display a sentence similar to:
 
 ```text
-Alice is studying Cybersecurity in Year 2
+Alex is studying Cybersecurity in Year 2
 ```
-
-using variables.
 
 Do not type the values directly into the final `echo` command.
 
 ---
 
-# 14. Environment Variables
+# Part 16: Environment Variables
 
-Linux already contains many predefined variables.
+Linux already provides a number of useful variables.
 
 Try:
 
@@ -814,9 +814,9 @@ echo $SHELL
 echo $PATH
 ```
 
-These are called **environment variables**.
+These are examples of **environment variables**.
 
-Display all environment variables:
+Display environment variables using:
 
 ```bash
 env
@@ -824,9 +824,9 @@ env
 
 ---
 
-## Exercise 8
+# Exercise 8: Environment Variables
 
-Find the value of the following variables:
+Display the values of:
 
 ```text
 USER
@@ -835,23 +835,19 @@ SHELL
 PATH
 ```
 
-Which one contains a list of directories rather than a single value?
-
-```text
-Answer:
-```
+Which variable contains multiple directory paths?
 
 ---
 
-# 15. Understanding `$PATH`
+# Part 17: Understanding `$PATH`
 
-When you enter:
+When you type:
 
 ```bash
 ls
 ```
 
-you did not specify where the `ls` program was located.
+you do not specify where the `ls` program is located.
 
 The shell searches directories listed in:
 
@@ -874,26 +870,22 @@ You may see:
 Try:
 
 ```bash
-which python
-```
-
-or:
-
-```bash
 which python3
 ```
-
-Also try:
 
 ```bash
 which grep
 ```
 
+```bash
+which bash
+```
+
 ---
 
-## Exercise 9
+# Exercise 9: Finding Commands
 
-Find the locations of:
+Find the location of:
 
 ```text
 bash
@@ -902,40 +894,28 @@ grep
 cat
 ```
 
-Record your answers.
-
-```text
-bash:
-
-python3:
-
-grep:
-
-cat:
-```
-
 ---
 
-# 16. Quoting
+# Part 18: Quoting
 
-Quoting is extremely important when writing shell commands and scripts.
+Quoting becomes very important when working with shell commands and scripts.
 
-Create a variable:
+Create:
 
 ```bash
-name="Alice"
+animal="fox"
 ```
 
 Try:
 
 ```bash
-echo "Hello $name"
+echo "The $animal is running"
 ```
 
-Now:
+Now try:
 
 ```bash
-echo 'Hello $name'
+echo 'The $animal is running'
 ```
 
 Notice the difference.
@@ -954,22 +934,22 @@ Single quotes:
 ' '
 ```
 
-usually treat the text literally.
+normally treat the contents literally.
 
 ---
 
-## Exercise 10 – Predict the Output
+# Exercise 10: Predict the Output
 
-Before running the commands, predict the output.
+Create:
 
 ```bash
-animal="fox"
+module="Scripting"
 ```
 
-### Command 1
+Before running the following commands, predict their output.
 
 ```bash
-echo "The $animal is running"
+echo "Module: $module"
 ```
 
 Prediction:
@@ -977,10 +957,10 @@ Prediction:
 ```text
 ```
 
-### Command 2
+Now:
 
 ```bash
-echo 'The $animal is running'
+echo 'Module: $module'
 ```
 
 Prediction:
@@ -992,9 +972,9 @@ Run both commands and check your answers.
 
 ---
 
-# 17. Command Substitution
+# Part 19: Command Substitution
 
-The output from one command can be stored or inserted into another command.
+The output from a command can be stored in a variable.
 
 Try:
 
@@ -1002,47 +982,63 @@ Try:
 today=$(date)
 ```
 
-Now:
+Display it:
 
 ```bash
-echo $today
+echo "$today"
 ```
 
-Another example:
+Create another variable:
 
 ```bash
 current_directory=$(pwd)
 ```
 
-Then:
+Now:
 
 ```bash
 echo "I am currently in $current_directory"
 ```
 
+The syntax:
+
+```text
+$(command)
+```
+
+means:
+
+> Run the command and substitute its output here.
+
 ---
 
-## Exercise 11
+# Exercise 11: Command Substitution
 
 Create variables containing:
 
 * your username;
-* your hostname;
+* the hostname;
 * your current directory.
 
-Use command substitution rather than entering the values manually.
+Use commands to obtain each value.
 
-Then produce output similar to:
+For example:
+
+```bash
+username=$(whoami)
+```
+
+Produce output similar to:
 
 ```text
-User alice is logged into workstation01 and is currently in /home/alice/cli-lab
+User Alex is logged into codespaces and is currently in /workspaces/scripting-for-cybersecurity/lab02
 ```
 
 ---
 
-# 18. Command History
+# Part 20: Command History
 
-The shell remembers commands you previously entered.
+The Linux shell remembers commands you have entered.
 
 Press:
 
@@ -1052,78 +1048,51 @@ Up Arrow
 
 several times.
 
-You can also display command history using:
+You should see previous commands.
+
+Display your command history:
 
 ```bash
 history
 ```
 
-Try:
-
-```bash
-history | tail
-```
-
-We will examine the `|` symbol shortly.
-
----
-
-## Useful History Features
-
-Run your previous command:
-
-```bash
-!!
-```
-
-For example:
-
-```bash
-echo "testing"
-!!
-```
-
-You can also search command history interactively.
+You can also search your history.
 
 Press:
 
 ```text
-CTRL + R
+Ctrl + R
 ```
 
-and type part of a previous command.
+Start typing part of an earlier command.
 
-Press:
-
-```text
-Enter
-```
-
-to execute the selected command.
+The shell will search backwards through your history.
 
 ---
 
-# 19. Useful Keyboard Shortcuts
+# Part 21: Useful Keyboard Shortcuts
 
-The following shortcuts can make command-line work much faster.
+Practise the following shortcuts.
 
-| Shortcut   | Purpose                         |
-| ---------- | ------------------------------- |
-| `Ctrl+C`   | Stop the current command        |
-| `Ctrl+L`   | Clear the screen                |
-| `Ctrl+A`   | Move to beginning of line       |
-| `Ctrl+E`   | Move to end of line             |
-| `Ctrl+U`   | Delete from cursor to beginning |
-| `Ctrl+K`   | Delete from cursor to end       |
-| `Ctrl+R`   | Search command history          |
-| `Tab`      | Command/file completion         |
-| `Up Arrow` | Previous command                |
+| Shortcut   | Purpose                          |
+| ---------- | -------------------------------- |
+| `Tab`      | Complete commands and filenames  |
+| `Up Arrow` | Previous command                 |
+| `Ctrl + R` | Search command history           |
+| `Ctrl + A` | Beginning of line                |
+| `Ctrl + E` | End of line                      |
+| `Ctrl + U` | Delete towards beginning of line |
+| `Ctrl + K` | Delete towards end of line       |
+| `Ctrl + C` | Stop the current command         |
+| `Ctrl + L` | Clear the terminal               |
+
+These shortcuts become very useful once you start spending significant time at the command line.
 
 ---
 
-## Exercise 12 – Command-Line Editing
+# Exercise 12: Command-Line Editing
 
-Type, but do not execute:
+Type, but do not immediately execute:
 
 ```text
 echo this is a very long cybersecurity command
@@ -1131,137 +1100,26 @@ echo this is a very long cybersecurity command
 
 Practise:
 
-1. `Ctrl+A`
-2. `Ctrl+E`
-3. `Ctrl+U`
-4. `Ctrl+K`
-
-Then use `Ctrl+R` to locate one of your earlier `mkdir` commands.
-
----
-
-# 20. Redirecting Output
-
-Normally command output appears on the screen.
-
-We can redirect it into a file.
-
-Run:
-
-```bash
-date
+```text
+Ctrl + A
+Ctrl + E
+Ctrl + U
+Ctrl + K
 ```
 
-Now:
-
-```bash
-date > timestamp.txt
-```
-
-Display the file:
-
-```bash
-cat timestamp.txt
-```
-
-The `>` symbol means:
+Then use:
 
 ```text
-send output to a file
+Ctrl + R
 ```
+
+to locate one of your earlier `mkdir` commands.
 
 ---
 
-## Warning
+# Part 22: Pipes
 
-Running:
-
-```bash
-date > timestamp.txt
-```
-
-again **replaces the previous contents**.
-
-To append instead, use:
-
-```bash
-date >> timestamp.txt
-```
-
-Try several times:
-
-```bash
-date >> timestamp.txt
-```
-
-Then:
-
-```bash
-cat timestamp.txt
-```
-
----
-
-# 21. Redirecting Command Results
-
-You can store almost any command output.
-
-Try:
-
-```bash
-ls -la > directory-listing.txt
-```
-
-Then:
-
-```bash
-cat directory-listing.txt
-```
-
-Try:
-
-```bash
-whoami > user.txt
-hostname > host.txt
-```
-
----
-
-## Exercise 13 – Create a System Snapshot
-
-Create a file called:
-
-```text
-snapshot.txt
-```
-
-containing:
-
-```text
-username
-hostname
-current date
-current directory
-```
-
-Use commands and output redirection.
-
-Your file might eventually look similar to:
-
-```text
-alice
-workstation01
-Sun Sep 13 14:31:12 IST 2026
-/home/alice/cli-lab
-```
-
-Try to complete this using only commands, without manually typing the values.
-
----
-
-# 22. Pipes
-
-One of the most powerful features of Linux is the ability to connect commands together.
+One of the most useful Linux features is the ability to send the output of one command into another.
 
 The pipe symbol is:
 
@@ -1269,25 +1127,44 @@ The pipe symbol is:
 |
 ```
 
-A pipe sends the **output of one command into another command**.
-
 Example:
 
 ```bash
 ls -la | less
 ```
 
-Instead of displaying everything at once, the output is sent into `less`.
+The output from:
 
-Quit using:
+```bash
+ls -la
+```
+
+is sent into:
+
+```bash
+less
+```
+
+Press:
 
 ```text
 q
 ```
 
+to exit `less`.
+
+Conceptually:
+
+```text
+command 1
+    |
+    v
+command 2
+```
+
 ---
 
-# 23. Counting Output
+# Part 23: Counting Output with `wc`
 
 The `wc` command can count:
 
@@ -1307,22 +1184,19 @@ Now:
 ls | wc -l
 ```
 
-This counts the number of lines produced by `ls`.
+The output from `ls` is sent into:
 
-Effectively:
-
-```text
-ls
- |
- v
+```bash
 wc -l
 ```
 
+which counts lines.
+
 ---
 
-## Exercise 14
+# Exercise 13: Counting
 
-Use command pipelines to determine:
+Use pipelines to determine:
 
 1. How many items are displayed by:
 
@@ -1330,7 +1204,7 @@ Use command pipelines to determine:
 ls
 ```
 
-2. How many lines are displayed by:
+2. How many lines are produced by:
 
 ```bash
 ls -la
@@ -1350,67 +1224,57 @@ command | wc -l
 
 ---
 
-# 24. Introducing `grep`
+# Part 24: Introducing `grep`
 
-`grep` searches text for matching patterns.
+`grep` searches text.
 
-Although we will study `grep` in much more detail later, it is extremely useful even for simple command-line work.
+We will study `grep` in much more detail in a later lab.
 
-Try:
+For now, try:
 
 ```bash
 env | grep USER
 ```
 
-Now:
+Try:
 
 ```bash
 env | grep PATH
 ```
 
-Try:
+Now:
 
 ```bash
 ls /usr/bin | grep python
 ```
 
-Here:
+This pipeline performs two steps:
 
 ```text
 ls /usr/bin
-```
-
-generates a list.
-
-The pipe:
-
-```text
-|
-```
-
-passes the list to `grep`.
-
-Then:
-
-```text
+      |
+      v
 grep python
 ```
 
-keeps lines containing `python`.
+The first command generates output.
+
+The second command keeps only lines containing:
+
+```text
+python
+```
 
 ---
 
-## Exercise 15 – Search Command Output
+# Exercise 14: Searching Command Output
 
 Use commands and `grep` to:
 
-1. Find environment variables containing the word `USER`.
-
-2. Find files in `/usr/bin` containing `python`.
-
-3. Find files in `/usr/bin` containing `ssh`.
-
-4. Count how many filenames in `/usr/bin` contain the word `python`.
+1. Find environment variables containing `USER`.
+2. Find filenames in `/usr/bin` containing `python`.
+3. Find filenames in `/usr/bin` containing `ssh`.
+4. Count filenames in `/usr/bin` containing `python`.
 
 Hint:
 
@@ -1420,9 +1284,9 @@ command | grep something | wc -l
 
 ---
 
-# 25. Building Command Pipelines
+# Part 25: Building Pipelines
 
-Linux commands become particularly powerful when several small commands are combined.
+Linux commands become particularly powerful when several commands are combined.
 
 For example:
 
@@ -1430,39 +1294,36 @@ For example:
 ls /usr/bin | grep python | wc -l
 ```
 
-Read this from left to right.
+Read this from left to right:
 
 ```text
 List /usr/bin
       |
       v
-keep entries containing "python"
+Keep entries containing "python"
       |
       v
-count the remaining lines
+Count the remaining lines
 ```
 
 ---
 
-## Exercise 16 – Pipeline Challenge
+# Exercise 15: Pipeline Challenge
 
-Without manually counting anything, determine:
+Using a **single command line** for each answer, determine:
 
-1. How many commands in `/usr/bin` contain `ssh` in their name?
-
+1. How many filenames in `/usr/bin` contain `ssh`?
 2. How many contain `python`?
+3. How many environment variables contain `PATH`?
+4. How many items are visible in your current `lab02` directory?
 
-3. How many environment variables contain the text `PATH`?
-
-4. How many files are currently visible in your `cli-lab` directory?
-
-Try to solve each problem using a **single command line**.
+Do not count anything manually.
 
 ---
 
-# 26. Combining Variables and Commands
+# Part 26: Variables and Command Pipelines
 
-Variables can also contain command results.
+A variable can store the result of an entire pipeline.
 
 Try:
 
@@ -1476,7 +1337,7 @@ Now:
 echo "There are $file_count items in this directory"
 ```
 
-Create another:
+Try:
 
 ```bash
 python_count=$(ls /usr/bin | grep python | wc -l)
@@ -1485,64 +1346,62 @@ python_count=$(ls /usr/bin | grep python | wc -l)
 Then:
 
 ```bash
-echo "I found $python_count commands containing python"
+echo "I found $python_count filenames containing python"
 ```
 
 ---
 
-## Exercise 17 – Mini Script Without a Script
+# Exercise 16: Build a Simple Report
 
 Create variables containing:
 
-```text
-username
-hostname
-current directory
-number of items in the current directory
-```
+* username;
+* hostname;
+* current directory;
+* number of items in the current directory.
 
-Then produce output similar to:
+Display:
 
 ```text
-User: alice
-Computer: workstation01
-Directory: /home/alice/cli-lab
-Items: 7
+User: Alex
+Computer: codespaces
+Directory: /workspaces/scripting-for-cybersecurity/lab02
+Items: 10
 ```
 
-You should obtain every value using commands rather than typing the values manually.
+All values should be obtained using commands.
 
 ---
 
-# 27. Cybersecurity Scenario
+# Part 27: Cybersecurity Scenario
 
-You have been given access to a Linux workstation during an investigation.
+Imagine you have opened a terminal during a basic investigation of a Linux environment.
 
-You want to quickly understand the environment without using graphical tools.
-
-Using commands covered in this lab, determine:
+Determine:
 
 ```text
 Current user
 Hostname
 Current directory
-Shell being used
-User's home directory
+Current shell
+User home directory
 Location of python3
 Location of bash
 Number of environment variables
-Number of commands in /usr/bin containing "ssh"
+Number of filenames in /usr/bin containing ssh
 ```
 
-Store the results in a file called:
+Create a file:
 
 ```text
 investigation.txt
 ```
 
+containing the results.
+
 You may use:
 
-```bash
+```text
 echo
 whoami
 hostname
@@ -1558,7 +1417,7 @@ $()
 |
 ```
 
-Your final file should be readable with:
+Display the finished report:
 
 ```bash
 cat investigation.txt
@@ -1566,117 +1425,65 @@ cat investigation.txt
 
 ---
 
-# 28. Final Challenge
+# Part 28: Final Challenge
 
-Complete the following challenge **without using a graphical file manager**.
-
-Create the directory:
+Inside `lab02`, create:
 
 ```text
-~/cli-lab/challenge
+challenge/
 ```
 
-Inside it create:
+Move into it.
+
+Create:
 
 ```text
-users.txt
+user.txt
 system.txt
 summary.txt
 ```
 
-### `users.txt`
+## `user.txt`
 
-Store the current username.
+Store your current username.
 
-### `system.txt`
+## `system.txt`
 
 Store:
 
-```text
-hostname
-current shell
-home directory
-```
+* hostname;
+* shell;
+* home directory.
 
-### `summary.txt`
+## `summary.txt`
 
-Produce output similar to:
+Produce something similar to:
 
 ```text
 Cybersecurity CLI Report
-User: alice
-Host: workstation01
-Directory: /home/alice/cli-lab/challenge
+User: Alex
+Host: codespaces
+Directory: /workspaces/scripting-for-cybersecurity/lab02/challenge
 Python: /usr/bin/python3
-Python commands found: 14
+Python filenames found: 14
 ```
 
-Your values will be different.
+Your values may differ.
 
-Where possible:
+Where possible, use:
 
-* use variables;
-* use command substitution;
-* use pipes;
-* use output redirection;
-* avoid manually typing values that Linux can determine for you.
+* variables;
+* command substitution;
+* pipes;
+* output redirection.
+
+Avoid manually typing information that Linux can obtain for you.
 
 ---
 
-# 29. Things You Should Now Know
+# Part 29: Quick Knowledge Check
 
-You should now be comfortable using:
-
-```bash
-pwd
-cd
-ls
-mkdir
-touch
-cat
-echo
-which
-env
-history
-man
-grep
-wc
-```
-
-You should also understand:
-
-```text
-~
-..
-.
-$
-$()
->
->>
-|
-" "
-' '
-```
-
-And you should be using:
-
-```text
-Tab
-Up Arrow
-Ctrl+R
-Ctrl+A
-Ctrl+E
-Ctrl+C
-Ctrl+L
-```
-
-regularly.
-
----
-
-# 30. Quick Knowledge Check
-
-Answer the following without looking back through the lab if possible.
+Answer the following.
 
 ### Question 1
 
@@ -1688,7 +1495,13 @@ Answer:
 
 ### Question 2
 
-What does `..` represent?
+What does:
+
+```text
+..
+```
+
+represent?
 
 ```text
 Answer:
@@ -1698,13 +1511,13 @@ Answer:
 
 What is the difference between:
 
-```bash
+```text
 >
 ```
 
 and:
 
-```bash
+```text
 >>
 ```
 
@@ -1714,11 +1527,13 @@ Answer:
 
 ### Question 4
 
-What does the pipe character do?
+What does:
 
-```bash
+```text
 |
 ```
+
+do?
 
 ```text
 Answer:
@@ -1744,7 +1559,7 @@ Answer:
 
 ### Question 6
 
-What does this command do?
+Explain:
 
 ```bash
 ls /usr/bin | grep python | wc -l
@@ -1756,11 +1571,13 @@ Answer:
 
 ### Question 7
 
-What is the purpose of:
+Why is:
 
 ```bash
-man
+cd ~
 ```
+
+not necessarily a good place to create your coursework inside Codespaces?
 
 ```text
 Answer:
@@ -1768,9 +1585,124 @@ Answer:
 
 ---
 
+# Part 30: Check Your Repository
+
+Return to the repository root.
+
+If you are currently inside:
+
+```text
+lab02/challenge
+```
+
+you could move upwards:
+
+```bash
+cd ../..
+```
+
+Check your location:
+
+```bash
+pwd
+```
+
+Your repository should now contain approximately:
+
+```text
+scripting-for-cybersecurity/
+├── README.md
+├── lab01/
+└── lab02/
+```
+
+List the contents:
+
+```bash
+ls
+```
+
+---
+
+# Part 31: Commit Your Work
+
+For now, use the Visual Studio Code **Source Control** interface.
+
+Stage your Lab 2 files.
+
+Use a commit message such as:
+
+```text
+Complete Lab 2
+```
+
+Commit and push your work.
+
+Return to GitHub and verify that `lab02` appears in your repository.
+
+---
+
+# Part 32: Update Your README
+
+Add Lab 2 to your repository README.
+
+For example:
+
+```markdown
+## Labs
+
+- Lab 01 - Development Environment
+- Lab 02 - Linux Command Line
+```
+
+Commit and push the change.
+
+---
+
+# Commands Introduced in This Lab
+
+You should now have used:
+
+```bash
+pwd
+ls
+cd
+mkdir
+touch
+cat
+echo
+whoami
+hostname
+date
+env
+which
+history
+man
+grep
+wc
+less
+```
+
+You should also understand:
+
+```text
+.
+..
+~
+$
+$()
+>
+>>
+|
+" "
+' '
+```
+
+---
+
 # Optional Extension
 
-If you finish early, investigate the following commands using `man` or `--help`.
+If you finish early, investigate the following commands using `man` or `--help`:
 
 ```bash
 head
@@ -1779,26 +1711,36 @@ sort
 uniq
 cut
 file
-find
 ```
 
 For each command:
 
 1. determine what it does;
 2. run at least one example;
-3. write down one way it could be useful during a cybersecurity investigation.
+3. consider how it might be useful when analysing cybersecurity data.
+
+Do not worry if you do not fully understand them yet.
+
+We will use several of these commands in the next lab.
 
 ---
 
-# End of Lab
+# Preparing for the Next Lab
 
-Before finishing, ensure that your `cli-lab` directory contains the files and directories created during the exercises.
+In the next command-line lab we will work with text and log data using commands such as:
 
-Run:
-
-```bash
-cd ~/cli-lab
-ls -la
+```text
+grep
+head
+tail
+sort
+uniq
+cut
+wc
 ```
 
-You should now have the basic command-line skills required for the scripting exercises later in this module.
+We will start combining these tools into more useful cybersecurity-focused pipelines.
+
+---
+
+# End of Lab 2
