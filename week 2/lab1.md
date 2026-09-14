@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Throughout this module, we will use **GitHub**, **Git**, and **GitHub Codespaces** to write, run, and store our work.
+Throughout this module, we will use **GitHub**, **Git**, and **GitHub Codespaces** to write, run, and store our work..
 
 You will use the same GitHub repository throughout the semester.
 
