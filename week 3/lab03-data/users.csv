@@ -1,0 +1,9 @@
+username,role,status,department
+alice,student,active,Computing
+bob,student,active,Computing
+charlie,staff,active,IT
+david,student,disabled,Computing
+eve,staff,active,Security
+frank,student,disabled,Computing
+grace,contractor,active,Facilities
+heidi,staff,disabled,Finance
