@@ -2,388 +2,130 @@
 
 ## Scripting for Cybersecurity
 
-This revision exercise covers the main commands and concepts introduced in:
+This exercise uses the **same supplied datasets** from Labs 3 and 4.
 
-* Lab 3 – Text Processing and Log Analysis
-* Lab 4 – Finding Files and Working with Data
-
-Complete each task using the Linux terminal in your GitHub Codespace.
-
-Create a directory for your work:
+Create:
 
 ```bash
 mkdir revision02
-cd revision02
 ```
 
----
+You may either work against the original `lab03` and `lab04` folders or copy the supplied data into `revision02`.
 
-# Setup
+Complete each task from the command line.
 
-Create a file called:
+## Question 1
 
-```text
-security.log
-```
+Display the first 5 lines and final 5 lines of `auth.log`.
 
-containing:
+## Question 2
 
-```text
-Failed login admin 203.0.113.10
-Failed login root 203.0.113.10
-Accepted login alice 192.168.1.20
-Failed login admin 198.51.100.24
-Accepted login bob 192.168.1.35
-Failed login root 203.0.113.10
-Failed login test 198.51.100.24
-Accepted login alice 192.168.1.20
-Failed login admin 203.0.113.15
-Failed login guest 203.0.113.10
-```
+Count the total number of lines in `auth.log`.
 
-Create:
+## Question 3
 
-```text
-accounts.csv
-```
+Display all failed-password events and count them.
 
-containing:
+## Question 4
 
-```text
-alice,student,active
-bob,student,active
-charlie,staff,active
-david,student,disabled
-eve,staff,active
-frank,student,disabled
-```
+Display all accepted-password events and count them.
 
-Create:
+## Question 5
 
-```bash
-mkdir logs scripts configs evidence
-```
+Display all authentication events involving either `admin` or `root`.
 
-Create:
+## Question 6
 
-```bash
-touch logs/auth.log
-touch logs/access.log
-touch scripts/check.py
-touch scripts/report.py
-touch scripts/run.sh
-touch configs/server.conf
-touch configs/app.conf
-touch evidence/notes.txt
-touch evidence/empty.bin
-```
+Extract the source IP addresses from failed-password events, remove duplicates, and display the unique addresses.
 
----
+## Question 7
 
-# Question 1
+Produce a count of failed-password events per source IP, sorted highest first.
 
-Display the first 4 lines of:
+## Question 8
 
-```text
-security.log
-```
+Use `users.csv` to display the usernames of all disabled accounts.
 
----
+## Question 9
 
-# Question 2
+Use `users.csv` to display only staff accounts.
 
-Display the final 3 lines of:
+## Question 10
 
-```text
-security.log
-```
+Determine which entries in `iocs.txt` appear in `auth.log`.
 
----
+## Question 11
 
-# Question 3
+Using `access.log`, count the number of `403` and `404` responses.
 
-Display all failed login attempts.
+## Question 12
 
----
+Find all requests to `/admin` and all requests involving `sqlmap`.
 
-# Question 4
+## Question 13
 
-Count how many failed login attempts appear in the log.
+Using the Lab 4 dataset, find every `.py`, `.sh`, `.log`, and `.conf` file.
 
----
+## Question 14
 
-# Question 5
+Count the total number of regular files and directories in Lab 4.
 
-Display all entries containing:
+## Question 15
 
-```text
-admin
-```
+Find all empty files.
 
-Include line numbers in the output.
+## Question 16
 
----
+Run `file` against every file in the `evidence` directory.
 
-# Question 6
+## Question 17
 
-Display all lines that **do not** contain:
+Use `basename` and `dirname` on the full path to `evidence/suspicious.dat`.
 
-```text
-Failed
-```
+## Question 18
 
----
+Use `diff -u` to compare `config-old.txt` and `config-new.txt` and save the result to `config-changes.txt`.
 
-# Question 7
+## Question 19
 
-Count:
+Use recursive searching to identify every file containing `admin`, `BLOCK`, or `password123`.
 
-1. the number of lines in `security.log`;
-2. the number of words in `security.log`.
+## Question 20
 
----
-
-# Question 8
-
-Extract only the usernames from:
-
-```text
-accounts.csv
-```
-
-Expected output:
-
-```text
-alice
-bob
-charlie
-david
-eve
-frank
-```
-
----
-
-# Question 9
-
-Display only the usernames of accounts whose status is:
-
-```text
-disabled
-```
-
----
-
-# Question 10
-
-Using the IP addresses in `security.log`, determine how many times each IP appears.
-
-Hint:
-
-The IP address is the final field.
-
-You may use:
-
-```bash
-awk '{print $NF}'
-```
-
-with other commands.
-
----
-
-# Question 11
-
-Determine which IP address appears most frequently in:
-
-```text
-security.log
-```
-
-Use a command pipeline.
-
----
-
-# Question 12
-
-Use wildcards to display:
-
-1. all Python files inside `scripts`;
-2. all configuration files inside `configs`;
-3. all files beginning with `a` inside `logs`.
-
----
-
-# Question 13
-
-Use `find` to locate every:
-
-```text
-.py
-```
-
-file below your current directory.
-
----
-
-# Question 14
-
-Use `find` to display:
-
-1. every regular file;
-2. every directory.
-
----
-
-# Question 15
-
-Use `find` to count how many `.conf` files exist below the current directory.
-
----
-
-# Question 16
-
-Use an appropriate command to determine the file type of:
-
-```text
-security.log
-accounts.csv
-scripts/check.py
-evidence/empty.bin
-```
-
----
-
-# Question 17
-
-Use:
-
-```text
-basename
-```
-
-and:
-
-```text
-dirname
-```
-
-with the path:
-
-```text
-/workspaces/scripting-for-cybersecurity/revision02/scripts/check.py
-```
-
-Determine:
-
-1. the filename;
-2. the directory path.
-
----
-
-# Question 18
-
-Create:
-
-```text
-config-old.txt
-```
-
-containing:
-
-```text
-port=80
-debug=false
-timeout=30
-```
-
-Create:
-
-```text
-config-new.txt
-```
-
-containing:
-
-```text
-port=443
-debug=false
-timeout=60
-```
-
-Use an appropriate command to display the differences between the two files.
-
----
-
-# Question 19
-
-Use `find` and `xargs` to run:
-
-```text
-file
-```
-
-against every file inside:
-
-```text
-scripts
-```
-
----
-
-# Question 20
-
-Create:
-
-```text
-revision-report.txt
-```
-
-containing information similar to:
+Create `revision-report.txt` containing:
 
 ```text
 Labs 3 and 4 Revision Report
 
-Total Security Log Entries: X
-Failed Login Attempts: X
-Accepted Login Attempts: X
-Unique IP Addresses: X
+Authentication Log Entries:
+Failed Password Events:
+Accepted Password Events:
+Unique Failed Login IPs:
+Most Frequent Failed Login IP:
 
-Most Frequent IP:
-X
+Web Requests:
+403 Responses:
+404 Responses:
 
-Total Files: X
-Total Directories: X
-Python Files: X
-Configuration Files: X
-Empty Files: X
+Lab 4 Files:
+Lab 4 Directories:
+Python Files:
+Shell Scripts:
+Log Files:
+Configuration Files:
+Empty Files:
 ```
 
-All values should be calculated using Linux commands.
+All values must be generated using commands and pipelines rather than manually calculated.
 
-Do not manually calculate values that can be generated using:
+## Final Task
+
+Commit and push:
 
 ```text
-grep
-wc
-cut
-awk
-sort
-uniq
-find
+revision-report.txt
+config-changes.txt
 ```
-
----
-
-# Final GitHub Task
-
-Once all questions are complete:
-
-1. Return to the root of your repository.
-2. Confirm that `revision02` exists.
-3. Stage your changes.
-4. Commit your work.
-5. Push to GitHub.
 
 Suggested commit message:
 
@@ -391,13 +133,9 @@ Suggested commit message:
 Complete Labs 3 and 4 revision
 ```
 
----
+## Commands Reviewed
 
-# Commands Reviewed
-
-This exercise reviews:
-
-```bash
+```text
 cat
 head
 tail
@@ -413,23 +151,7 @@ basename
 dirname
 diff
 xargs
+unzip
 ```
-
-It also reviews:
-
-```text
-*
-?
-pipes
-redirection
-recursive searching
-field extraction
-sorting
-counting
-file discovery
-file identification
-```
-
----
 
 # End of Revision Exercise
